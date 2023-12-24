@@ -6,6 +6,7 @@
     <title>データ登録</title>
 </head>
 <body>
+    <button><a href="select.php">データベースを確認する</a></button>
     <form method="post" action="insert.php">
         <fieldset>
             <legend>本アンケート</legend>
