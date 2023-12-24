@@ -2,14 +2,18 @@
 // 0.関数の用意
 require_once("funcs.php");
 
+// 1.DB接続は関数化出来る
+$pdo=db_conn();
 
-// 1.DB接続
-try {
-    //ID:'root', Password: xamppは 空白 ''
-    $pdo = new PDO('mysql:dbname=gs_db;charset=utf8;host=localhost','root','');
-  } catch (PDOException $e) {
-    exit('DBConnectError:'.$e->getMessage());
-  }
+// もともとのコード
+// try {
+//     //ID:'root', Password: xamppは 空白 ''
+//     $pdo = new PDO('mysql:dbname=gs_db;charset=utf8;host=localhost','root','');
+//   } catch (PDOException $e) {
+//     exit('DBConnectError:'.$e->getMessage());
+//   }
+
+
 
 // 2.データ取得のSQLを作成
 $stmt = $pdo->prepare("SELECT * FROM gs_bm_table");
@@ -27,7 +31,16 @@ if ($status==false) {
   //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
   while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
     $view .= "<p>";
+
+    // ここにリンクを入れて、各データごとに選択できるようにする
+    $view .='<a href="detail.php?id=' .$result["id"] . '">';
     $view .= h($result["name"]) . h($result["url"]) . h($result["comments"]). h($result["date"]);
+    $view .="</a>";
+
+    // $view .="<a href="delete.php?id=' .$result["id"] . '">";
+    // $view .="(削除)";
+    // $view .="</a>";
+    
     $view .= "</p>";
   }
 }
