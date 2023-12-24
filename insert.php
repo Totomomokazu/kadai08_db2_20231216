@@ -8,12 +8,9 @@ $comment=$_POST["comment"];
 
 
 // 2.DBへ接続
-try {
-    //ID:'root', Password: xamppは 空白 ''
-    $pdo = new PDO('mysql:dbname=gs_db;charset=utf8;host=localhost','root','');
-  } catch (PDOException $e) {
-    exit('DBConnectError:'.$e->getMessage());
-  }
+require_once("funcs.php");
+$pdo = db_conn();
+
 
 // 3.データ登録SQL作成
 // 3-1.SQL文を用意

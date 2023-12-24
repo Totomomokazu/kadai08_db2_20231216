@@ -46,6 +46,7 @@ if ($status === false) {
             <label>本の名前：<input type="text" name="name" value="<?= $result["name"] ?>"></label><br>
             <label>紹介用リンク：<input type="text" name="url" value="<?= $result["url"] ?>"></label><br>
             <label><textarea name="comment" id="" cols="30" rows="10"><?= $result["comments"] ?></textarea></label><br>
+            <input type="hidden" name="id" value="<?= $result["id"]?>">
             <input type="submit" value="更新">
         </fieldset>
     </form>    
