@@ -37,9 +37,9 @@ if ($status==false) {
     $view .= h($result["name"]) . h($result["url"]) . h($result["comments"]). h($result["date"]);
     $view .="</a>";
 
-    // $view .="<a href="delete.php?id=' .$result["id"] . '">";
-    // $view .="(削除)";
-    // $view .="</a>";
+    $view .='<a href="delete.php?id=' .$result["id"] . '">';
+    $view .="(削除)";
+    $view .="</a>";
     
     $view .= "</p>";
   }
